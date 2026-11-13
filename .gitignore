@@ -1,0 +1,26 @@
+# Your personal settings (location etc.). Created on first start.
+settings.local.toml
+
+# Downloaded on first start, see planeoverme/firstrun.py
+data/standing-data/
+data/standing-data.tmp/
+data/lookup.db
+data/*.tmp
+assets/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Claude working notes and editor files
+CLAUDE.md
+.claude/
+.tmp/
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

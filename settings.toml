@@ -1,0 +1,148 @@
+# Plane Over Me settings.
+#
+# Your location is asked on first start and saved in settings.local.toml,
+# which overrides anything here and stays on your computer. You can copy any
+# other setting from this file into settings.local.toml to change it too.
+
+[home]
+# Demo location (central Paris), used until you set your own with:
+#   python -m planeoverme setup
+lat = 48.8530
+lon = 2.3499
+
+[source]
+# "live"   = fetch from adsb.lol
+# "sample" = replay a saved snapshot (works offline)
+mode = "live"
+sample_file = "samples/sample.json"
+
+# How far around home to ask the API for planes (nautical miles, max 250).
+search_radius_nm = 25
+
+# adsb.lol allows 500 requests per day (reset at 00:00 UTC). The app
+# spreads them over the day: no requests during quiet_hours, and the rest
+# paced so they last until the reset (about one every 2 minutes).
+daily_request_limit = 500
+quiet_hours = "23:00-07:00"
+
+# Never ask more often than this (seconds), even with plenty left.
+poll_seconds = 15
+
+# Between requests, estimate where each plane is from its speed, heading and
+# climb rate, so altitude and distance keep moving.
+estimate_movement = false
+# Ignore data older than this (seconds); then the clock shows "NO DATA".
+max_data_age_s = 300
+
+timeout_seconds = 10
+
+# ---------------------------------------------------------------------------
+# Rules: which plane gets shown. All values are starting points, tune freely.
+# ---------------------------------------------------------------------------
+[rules]
+# A plane must be at most this far from home (ground distance, km).
+max_distance_km = 18
+
+# Ignore planes above this altitude (feet). Set to 0 for no limit.
+max_altitude_ft = 25000
+
+# Only show airline flights (hides private planes, helicopters, gliders).
+airlines_only = true
+
+# Only show airliners (hides business-jet companies such as NetJets and
+# VistaJet, which use airline-style callsigns). Airliner types are the ones
+# listed in data/aircraft_names.toml.
+airliners_only = true
+
+# Airlines to never show, by ICAO code, e.g. ["SKX"].
+exclude_airlines = []
+
+# Ignore planes whose last position is older than this (seconds).
+max_position_age_s = 60
+
+[rules.watchlist]
+# Watchlist planes jump the queue, may be further away, and ignore the
+# altitude and airlines-only limits above.
+max_distance_km = 40
+# ICAO airline codes, e.g. "AFR" (Air France), "BAW" (British Airways).
+airlines = []
+# ICAO type codes: A388 = A380, B748/B744 = 747, A35K/A359 = A350.
+types = ["A388", "B748", "B744", "A35K", "A359", "B77W", "B789", "B78X"]
+# Registrations, e.g. "F-HTYF".
+registrations = []
+
+[rules.emergency]
+# Emergency squawks (7500/7600/7700) always win, within this distance (km).
+# Keep it inside search_radius_nm above (25 NM = 46 km).
+max_distance_km = 45
+
+# ---------------------------------------------------------------------------
+# Timing: how long planes stay on screen.
+# ---------------------------------------------------------------------------
+[timing]
+# Keep a plane on screen at least this long before switching to another
+# (unless an emergency or watchlist plane shows up).
+min_display_s = 20
+# A plane's turn ends after this long if another plane qualifies (seconds).
+# Set to 0 for no limit. In a 10-minute sample, 3 to 6 planes qualified at
+# once and each qualified for 2 to 3 minutes, so 60 s gives each a turn.
+max_display_s = 60
+# After a plane has been shown, don't show it again for this long (minutes).
+cooldown_min = 5
+# If a plane drops out of the data (not out of range), keep it this long
+# (seconds). Should be longer than the time between API updates.
+missing_grace_s = 45
+
+# ---------------------------------------------------------------------------
+# Display
+# ---------------------------------------------------------------------------
+[display]
+# "web" = LED simulator in the browser, "matrix" = real panel (Pi, later).
+backend = "web"
+web_port = 8888
+# Units on screen: altitude "ft" or "m"; speed "kmh" or "kt".
+altitude_unit = "ft"
+speed_unit = "kmh"
+clock_24h = true
+
+# Airport-board look: each character sits on a dim tile, like split flaps.
+# Set to false for a plain black background.
+tiles = true
+# How bright the background tiles are, in percent (100 = strong, 0 = off).
+tile_brightness = 50
+
+# Airline logos (from assets/logos). Make them with:
+#   python -m planeoverme logos
+# logo_size = 24, 20 or 16: logo top-left, all text in the small size.
+# logo_size = 7: big flight number and model, a 7x7 badge before the name.
+logos = true
+logo_size = 24
+
+# Any text too long for its space rolls continuously to the left, like a
+# ticker, at scroll_speed pixels per second.
+scroll_speed = 10
+
+# Screens shown for a plane. With one screen it stays still; with several
+# they rotate in order.
+#   full      everything on one screen: flight number, route, aircraft
+#             model, logo + airline name, altitude, distance + direction
+#   who       flight number, route, aircraft type
+#   altitude  how high, and climbing or descending
+#   distance  how far from home, and which direction
+#   speed     ground speed
+screens = ["full"]
+
+[display.screen_seconds]
+who = 7
+altitude = 4
+distance = 4
+speed = 4
+full = 10
+
+# Optional: your own airline names (by ICAO code), e.g. NSZ = "NORWEGIAN".
+[display.airline_names]
+
+[web]
+# Airports drawn on the browser radar for orientation. "auto" shows the
+# airports near the active location; or list ICAO codes, e.g. ["LFPG", "LFPO"].
+landmarks = "auto"

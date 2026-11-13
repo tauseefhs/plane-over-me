@@ -1,0 +1,11 @@
+# Example personal settings. The first start creates settings.local.toml for
+# you; this file just shows the idea. Anything in settings.local.toml
+# overrides settings.toml.
+
+[home]
+lat = 48.8530
+lon = 2.3499
+
+[display]
+altitude_unit = "m"
+speed_unit = "kmh"

@@ -1,0 +1,203 @@
+# Hand-drawn 7x7 logo badges. These replace the automatic conversion for the
+# listed airlines (ICAO code). Each badge has 7 rows of 7 characters; every
+# letter maps to a color in `colors`, "." is black (off).
+# `same_as` reuses another airline's badge.
+# After editing, run:  python -m planeoverme logos
+
+[AFR]   # Air France: red slash
+colors = { R = "#FF1E28" }
+pixels = [
+  ".....RR",
+  "....RRR",
+  "...RRR.",
+  "..RRR..",
+  ".RRR...",
+  "RRR....",
+  "RR.....",
+]
+
+[TVF]   # Transavia: green circle, white t
+colors = { G = "#00E070", W = "#FFFFFF" }
+pixels = [
+  ".GGGGG.",
+  "GGWGGGG",
+  "GWWWWGG",
+  "GGWGGGG",
+  "GGWGGGG",
+  "GGGWWGG",
+  ".GGGGG.",
+]
+
+[TRA]
+same_as = "TVF"
+
+[EZY]   # easyJet: orange square, white e
+colors = { O = "#FF6600", W = "#FFFFFF" }
+pixels = [
+  "OOOOOOO",
+  "OOWWWOO",
+  "OWOOOWO",
+  "OWWWWWO",
+  "OWOOOOO",
+  "OOWWWWO",
+  "OOOOOOO",
+]
+
+[EJU]
+same_as = "EZY"
+
+[EZS]
+same_as = "EZY"
+
+[RYR]   # Ryanair: blue square, yellow harp
+colors = { B = "#1446C8", Y = "#FFD23C" }
+pixels = [
+  "BBBBBBB",
+  "BYYYYBB",
+  "BBYYYYB",
+  "BBYYYYB",
+  "BBYYYBB",
+  "BBBYBBB",
+  "BBBBBBB",
+]
+
+[NSZ]   # Norwegian: red square, white N
+colors = { R = "#E0203C", W = "#FFFFFF" }
+pixels = [
+  "RRRRRRR",
+  "RWRRRWR",
+  "RWWRRWR",
+  "RWRWRWR",
+  "RWRRWWR",
+  "RWRRRWR",
+  "RRRRRRR",
+]
+
+[NOZ]
+same_as = "NSZ"
+
+[NAX]
+same_as = "NSZ"
+
+[IBK]
+same_as = "NSZ"
+
+[IBE]   # Iberia: red and yellow swoosh
+colors = { R = "#E8192D", Y = "#FFCC00" }
+pixels = [
+  ".....YY",
+  "....YYY",
+  "...RRY.",
+  "..RRR..",
+  ".RRRR..",
+  "RRRR...",
+  "RR.....",
+]
+
+[EWG]   # Eurowings: burgundy square, white W
+colors = { M = "#C8144B", W = "#FFFFFF" }
+pixels = [
+  "MMMMMMM",
+  "MWMMMWM",
+  "MWMMMWM",
+  "MWMWMWM",
+  "MWMWMWM",
+  "MMWMWMM",
+  "MMMMMMM",
+]
+
+[VLG]   # Vueling: yellow V
+colors = { Y = "#FFD200" }
+pixels = [
+  "YY...YY",
+  "YY...YY",
+  ".YY.YY.",
+  ".YY.YY.",
+  "..YYY..",
+  "..YYY..",
+  "...Y...",
+]
+
+[DLH]   # Lufthansa: blue circle, white ring and crane
+colors = { B = "#2846C8", W = "#FFFFFF" }
+pixels = [
+  ".BBBBB.",
+  "BBWWWBB",
+  "BWBBBWB",
+  "BWBWBWB",
+  "BWBBBWB",
+  "BBWWWBB",
+  ".BBBBB.",
+]
+
+[BAW]   # British Airways: red and blue ribbon
+colors = { R = "#FF2828", B = "#2878FF" }
+pixels = [
+  ".......",
+  ".......",
+  "RRRRRR.",
+  ".RRRRRR",
+  "....BBB",
+  ".......",
+  ".......",
+]
+
+[KLM]   # KLM: blue square, white crown
+colors = { C = "#00A8E8", W = "#FFFFFF" }
+pixels = [
+  "CCCCCCC",
+  "CCCWCCC",
+  "CCWWWCC",
+  "CWCWCWC",
+  "CWWWWWC",
+  "CCCCCCC",
+  "CCCCCCC",
+]
+
+[DAL]   # Delta: two-tone red triangle
+colors = { R = "#FF2840", D = "#B4102C" }
+pixels = [
+  "...R...",
+  "..RRD..",
+  "..RRD..",
+  ".RRRDD.",
+  ".RRRDD.",
+  "RRRRDDD",
+  "RRRRDDD",
+]
+
+[THY]   # Turkish Airlines: red circle, white crescent
+colors = { R = "#E8141E", W = "#FFFFFF" }
+pixels = [
+  ".RRRRR.",
+  "RRWWWRR",
+  "RWWRRRR",
+  "RWRRRRR",
+  "RWWRRRR",
+  "RRWWWRR",
+  ".RRRRR.",
+]
+
+[SWR]   # Swiss: red square, white cross
+colors = { R = "#FF1E1E", W = "#FFFFFF" }
+pixels = [
+  "RRRRRRR",
+  "RRRWRRR",
+  "RRRWRRR",
+  "RWWWWWR",
+  "RRRWRRR",
+  "RRRWRRR",
+  "RRRRRRR",
+]
+
+[SVA]   # Saudia: gold palm tree over crossed swords
+colors = { G = "#E6BE6E", T = "#B48C46" }
+pixels = [
+  "GG.G.GG",
+  ".GGGGG.",
+  "G..T..G",
+  "...T...",
+  "G..T..G",
+  ".G.T.G.",
+  "..G.G..",
+]
